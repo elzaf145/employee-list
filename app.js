@@ -2,10 +2,12 @@
 on button details and see also an email and start date for each person. you can search an employee by
 their name and also the list is alphabetically sorted so it is easier to navigate. for functionality 
 it would be great to have a feature "add employees" so that HR manager can add anyone easily, but as 
-the task specified not to have much backend code, I did not finish this idea. In this context it would be 
-easier to have a file with all people data, but this setup was easier for me and for such little content.
-For great visual I added a Bootstrap modal to clean the result up and make it pretty. It creates a style
-for each element in the list and their details. */ 
+the task specified not to have much backend code, I did not finish this idea. I just changed
+the search so that employees can be found both by name and job title because it is more practical if HR
+manager wants to find people in specific position. 
+In this context it would be easier to have a file with all people data, but this setup was easier 
+for me and for such little content. For great visual I added a Bootstrap modal to clean the result 
+up and make it pretty. It creates a style for each element in the list and their details. */ 
 
 
 // array of employees
@@ -39,8 +41,9 @@ const employees = [
 //  "filter" –  acepts only the name the user types in the search
   function renderList(filter = "") {
     const filtered = sortedEmployees.filter(emp =>
-      emp.name.toLowerCase().includes(filter.toLowerCase())
-    );
+        emp.name.toLowerCase().includes(filter.toLowerCase()) ||
+        emp.title.toLowerCase().includes(filter.toLowerCase())
+      );
   
     employeeList.innerHTML = "";
   
